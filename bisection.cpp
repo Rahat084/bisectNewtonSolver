@@ -1,20 +1,24 @@
 # include <iostream>
 # include <cmath>
-# import "functions.h"
+# include  "functions.h"
 
 int main()
 { 
 using namespace std;
-//    std::cout << sqrt(64) << std::endl;
 // create analytical function of h
 //  Input initial value
- cout << "Enter an maximum guess: "; 
- double Tmax;
+ double Tmax, Tmin;
+ // Inpute minimum and maximum values given f(Tmx) * f(Tmin) < 0
+ cout << "f(Tmax) * f(Tmin) must be < 0" << endl;
+ do
+ {
+ cout << "Enter an maximum guess Tmax: "; 
  cin >> Tmax;
- // Inpute minum value
- cout << "Enter an minimum guess: "; 
- double Tmin;
+ cout << "Enter an minimum guess Tmin: "; 
  cin >> Tmin;
+ cout << "f(Tmax) * f(Tmin) = " << f(Tmax) * f(Tmin) << endl;
+ } while(f(Tmax)*f(Tmin) > 0);
+ 
  // define tolerance aind initial error
  double tol = 1e-12;
  double error = tol + 1;
@@ -24,7 +28,7 @@ using namespace std;
  double T1;
 
 
- while (error > tol && it < max_it)
+ while (fabs(error) > tol && it < max_it)
  { 
      T1 = 0.5* (Tmax + Tmin);
      error = f(T1);
@@ -37,10 +41,10 @@ using namespace std;
 	 Tmax = T1;
      }
      it++;
-     cout << error << endl;
+     cout << "iteration :" << it << " error :" << error << endl;
  }
 
-if (error <= tol)
+if (fabs(error) <= tol)
 {
     cout << "The root is " << T1 << endl;
 }

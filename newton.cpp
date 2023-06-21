@@ -5,8 +5,6 @@
 int main()
 { 
 using namespace std;
-//    std::cout << sqrt(64) << std::endl;
-// create analytical function of h
 //  Input initial value
  cout << "Enter an initial guess: "; 
  double T0;
@@ -25,7 +23,7 @@ using namespace std;
      error = fabs(T1 - T0);
      T0 = T1;
      it++;
-     cout << error << endl;
+     cout << "iteration :" << it << " error " << error << endl;
  }
 
 if (error <= tol)
@@ -37,7 +35,6 @@ else
     cout << "Error, no convergence" << endl;
 }
 cin.get();
-cin.get ();
 
 return 0;
 }
